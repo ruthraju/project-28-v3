@@ -84,16 +84,16 @@ function draw() {
 
       //[optional code to add trajectory of arrow]
       
-      // var posX = playerArrows[i].body.position.x;
-      // var posY = playerArrows[i].body.position.y;
+      var posX = playerArrows[i].body.position.x;
+      var posY = playerArrows[i].body.position.y;
 
-      // if (posX > width || posY > height) {
-      //   if (!playerArrows[i].isRemoved) {
-      //     playerArrows[i].remove(i);
-      //   } else {
-      //     playerArrows[i].trajectory = [];
-      //   }
-      // }
+      if (posX > width || posY > height) {
+        if (!playerArrows[i].isRemoved) {
+          playerArrows[i].remove(i);
+        } else {
+          playerArrows[i].trajectory = [];
+        }
+      }
     }
   }
 

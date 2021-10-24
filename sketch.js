@@ -130,7 +130,7 @@ function keyPressed() {
       var posY = playerArcher.body.position.y;
       var angle = playerArcher.body.angle;
 
-      var arrow = new PlayerArrow(posX, posY, 100, 20, angle);
+      var arrow = new PlayerArrow(posX, posY, 100, 10, angle);
 
       arrow.trajectory = [];
       Matter.Body.setAngle(arrow.body, angle);

@@ -25,14 +25,13 @@ class PlayerArrow {
   }
 
   shoot(archerAngle) {
-    archerAngle += 90;
-    this.velocity = p5.Vector.fromAngle(archerAngle * (3.14 / 180));
+      this.velocity = p5.Vector.fromAngle(archerAngle + PI / 2);
+    this.velocity.mult(55);
 
-    this.velocity.mult(0.5);
 
     Matter.Body.setVelocity(this.body, {
-      x: this.velocity.x * (180 / 3.14),
-      y: this.velocity.y * (180 / 3.14)
+      x: this.velocity.x ,
+      y: this.velocity.y 
     });
 
     Matter.Body.setStatic(this.body, false);
@@ -42,10 +41,10 @@ class PlayerArrow {
   display() {
     var tmpAngle;
     if (this.body.velocity.y === 0) {
-      tmpAngle = this.archerAngle + 90;
+      tmpAngle = this.archerAngle + PI/2;
     } else {
       tmpAngle =
-        Math.atan(this.body.velocity.y / this.body.velocity.x) * (180 / 3.14);
+        Math.atan(this.body.velocity.y / this.body.velocity.x);
     }
 
     Matter.Body.setAngle(this.body, tmpAngle);
@@ -63,14 +62,14 @@ class PlayerArrow {
 
     //optional code to add trajectory to the arrow
     
-    // if (this.body.velocity.x > 0 && this.body.position.x > 400) {
-    //   var position = [this.body.position.x, this.body.position.y];
-    //   this.trajectory.push(position);
-    // }
+    if (this.body.velocity.x > 0 && this.body.position.x > 400) {
+      var position = [this.body.position.x, this.body.position.y];
+      this.trajectory.push(position);
+    }
 
-    // for (var i = 0; i < this.trajectory.length; i++) {
-    //   fill("white");
-    //   ellipse(this.trajectory[i][0], this.trajectory[i][1], 5, 5);
-    // }
+    for (var i = 0; i < this.trajectory.length; i++) {
+      fill("white");
+      ellipse(this.trajectory[i][0], this.trajectory[i][1], 5, 5);
+    }
   }
 }

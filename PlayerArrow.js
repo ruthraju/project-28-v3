@@ -18,11 +18,11 @@ class PlayerArrow {
 
   // for trejactory
 
-  // remove(index) {
-  //   this.isRemoved = true;
-  //   Matter.World.remove(world, this.body);
-  //   delete playerArrows[index];
-  // }
+  remove(index) {
+    this.isRemoved = true;
+    Matter.World.remove(world, this.body);
+    delete playerArrows[index];
+  }
 
   shoot(archerAngle) {
     archerAngle += 90;

@@ -47,11 +47,13 @@ function setup() {
 
 function draw() {
   background(backgroundImg );
-  image(baseimage,playerBase.position.x,playerBase.position.y,180,150)
-  image(playerimage,player.position.x,player.position.y,50,180)
+//   image(baseimage,playerBase.position.x,playerBase.position.y,180,150)
+//   image(playerimage,player.position.x,player.position.y,50,180)
 
   Engine.update(engine);
 
+  playerBase.display();
+  player.display();
   playerArcher.display();
 
   board1.display();
@@ -61,14 +63,7 @@ function draw() {
     if (playerArrows[i] !== undefined) {
       playerArrows[i].display();
 
-      //with distance formula
-      d1 = dist(playerArrows[i].body.position.x,playerArrows[i].body.position.y, board1.body.position.x,board1.body.position.y)
-      if(d1<=100)
-      {
-        console.log("collision");
-      }
-
-      var board1Collision = Matter.SAT.collides(
+           var board1Collision = Matter.SAT.collides(
         board1.body,
         playerArrows[i].body
       );
@@ -78,6 +73,14 @@ function draw() {
         playerArrows[i].body
       );
 
+      //with distance formula
+//       d1 = dist(playerArrows[i].body.position.x,playerArrows[i].body.position.y, board1.body.position.x,board1.body.position.y)
+//       if(d1<=100)
+//       {
+//         console.log("collision");
+//       }
+
+ 
       if (board1Collision.collided || board2Collision.collided) {
         score +=5
       }
@@ -151,6 +154,9 @@ function gameOver() {
     {
       title: `Game Over!!!`,
       text: "Thanks for playing!!",
+       imageUrl:
+        "https://raw.githubusercontent.com/vishalgaddam873/PiratesInvision/main/assets/board.png",
+      imageSize: "150x150",
       confirmButtonText: "Play Again"
     },
     function(isConfirm) {

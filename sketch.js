@@ -155,7 +155,7 @@ function gameOver() {
     },
     function(isConfirm) {
       if (isConfirm) {
-        location.reload();am8
+        location.reload();
       }
     }
   );
